@@ -25,8 +25,8 @@ void DriversitiLog(NSString* format, ...);
 //#import "KontaktSDK.h"
 //#endif
 
-#define DRIVERSITI_SDK_VERSION    @"0.9.13.1"
-#define DRIVERSITI_SDK_DATE       @"2016.2.9"
+#define DRIVERSITI_SDK_VERSION    @"0.9.13.3"
+#define DRIVERSITI_SDK_DATE       @"2016.2.12"
 
 #define METERS_PER_SECOND_TO_MPH 2.23694
 

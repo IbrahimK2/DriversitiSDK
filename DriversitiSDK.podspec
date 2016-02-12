@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "DriversitiSDK"
-  s.version      = "0.9.13.2"
+  s.version      = "0.9.13.3"
   s.summary      = "Driving safety for the mobile generation. Real-time notifications of unsafe driving behaviors."
   s.description  = <<-DESC
                     Transform smartphones from driver's worst enemy to their best friend
@@ -10,8 +10,8 @@ Pod::Spec.new do |s|
                     - uploads data to servers for reporting and analytics
                     DESC
 
-  s.homepage     = "http://driversiti.com/"
-  s.license      = { type: 'Custom', file: 'LICENSE.md'}
+  s.homepage     = "https://github.com/apiosys/DriversitiSDK"
+  s.license      = { type: 'Commericial', file: 'LICENSE.md'}
   s.author       = { "Driversiti" => "support@driversiti.com" }
   s.social_media_url = "https://twitter.com/driversiti"
   s.platform     = :ios, "7.1"
@@ -24,6 +24,8 @@ Pod::Spec.new do |s|
   s.source_files          = "include/DriversitiSDK/*.h"
   s.resource              = "DriversitiSDK.bundle"
   s.vendored_libraries    = "libDriversitiSDK.a"
+
+  s.preserve_paths         = "README.md", "LICENSE.md"
 
   s.requires_arc          = true
   s.frameworks            = 'UIKit','Foundation','SystemConfiguration','MobileCoreServices','CoreLocation'
