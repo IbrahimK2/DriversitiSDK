@@ -16,6 +16,7 @@ DriversitiSDK also employs Driversiti's patented real-time crash detection to no
 - Install the DriversitiSDK (CocoaPods is recommended)
 - Change project settings to enable SDK
 - Using the SDK in App.
+- Check out the full SDK documentation on [cocoadocs](http://cocoadocs.org/docsets/DriversitiSDK/).
 
 ### 1. Receive a DriversitiSDK Developer Key
 
