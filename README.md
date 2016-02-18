@@ -33,7 +33,7 @@ target "{NAME_OF_XCODE_TARGET}" do
 end
 ```
 
-Make sure to replace ``{NAME_OF_XCODE_TARGET}`` with the name of your target in your XCode project, typically the name of your app.
+Make sure to replace ``{NAME_OF_XCODE_TARGET}`` with the name of your target in your Xcode project, typically the name of your app.
 
 ### 2b. Installing the DriversitiSDK manually
 
