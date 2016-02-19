@@ -25,8 +25,8 @@ void DriversitiLog(NSString* format, ...);
 //#import "KontaktSDK.h"
 //#endif
 
-#define DRIVERSITI_SDK_VERSION    @"0.9.13.3"
-#define DRIVERSITI_SDK_DATE       @"2016.2.12"
+#define DRIVERSITI_SDK_VERSION    @"0.9.13.4"
+#define DRIVERSITI_SDK_DATE       @"2016.2.18"
 
 #define METERS_PER_SECOND_TO_MPH 2.23694
 
@@ -88,7 +88,7 @@ __attribute__ ((deprecated))
 @optional
 /**
  Used to capture ALL raw sensor data in the app
- 
+
  @param detections <#detections description#>
  @param sensorData Sensor raw data structure
  @param timestamp  <#timestamp description#>
@@ -98,14 +98,14 @@ __attribute__ ((deprecated))
 
 /**
  Tells the delegate that the user's location has been updated
- 
+
  @param location Updated device location
  */
 - (void)sensorLocationUpdate:(CLLocation *)location;
 
 /**
  Tells the delegate that the user's walking state has changed
- 
+
  @param isWalking TRUE if the user is walking
  @param location  Location of event
  */
@@ -113,7 +113,7 @@ __attribute__ ((deprecated))
 
 /**
  Tells the delegate that the car mode has changed
- 
+
  @param carMode             TRUE if Apio has detected the device is in a car.
  @param wasBasedOnDetection TRUE, If the Car mode change was based on sensor detection; FALSE if detected was based on physical movement
  @param wasBasedOnBeacon    TRUE, If the Car mode change was based on beacon detection; FALSE if not based on beacon
@@ -124,7 +124,7 @@ __attribute__ ((deprecated))
 
 /**
  Tells the delegate that the car has been identified
- 
+
  @param vehicle          the vehicle that has been identified
  @param location         Location of where the event took place
  @param detectedByBeacon TRUE, If the ID was based on beacon detection; FALSE if not based on beacon
@@ -133,7 +133,7 @@ __attribute__ ((deprecated))
 
 /**
  Tells the delegate that a new car has been identified
- 
+
  @param vehicle          the vehicle that has been identified
  @param location         Location of where the event took place
  */
@@ -141,14 +141,14 @@ __attribute__ ((deprecated))
 
 /**
  Tells the delegate that vehicle ignition was detected
- 
+
  @param location Location of where the event took place
  */
 - (void)sensorVehicleIgnitionDetectedAtLocation:(CLLocation *)location;
 
 /**
  Tells the delegate that the vehicle's speed has gone above or fallen below the speeding threshold
- 
+
  @param isSpeeding TRUE if the user is exceeding the speeding threshold
  @param location   Location of where the event took place, including the speed in m/s
  */
@@ -228,15 +228,15 @@ __attribute__ ((deprecated))
 #pragma mark -
 /** The DriversitiSDK class is the main class used in accessing the Apio SDK. This class maintains a singleton instance
  that can be retrieved through the sharedInstance class method.
- 
+
  Generally, the SDK usage steps are:
- 
+
  - Register a user using [UserManager userRegisterWithEmailAddress:password:firstName:middleName:lastName:streetAddress:city:state:country:zipcode:phoneNumber:username:companyId:completionBlock:]
  - Registering a vehicle using [VehicleManager vehicleRegisterWithName:vehicleModel:vehicleMake:vehicleYear:vehicleLicensePlate:vehicleColor:vehicleMPG:vin:completionBlock:]
  - To start and stop the collection of events see startDataCollection and stopDataCollection
  - For handling of detected events set the sensorDelegate and see the ApioSensorDelegate documentation
  - Displaying trip/event information
- 
+
  */
 
 @interface DriversitiSDK : NSObject
@@ -247,7 +247,7 @@ __attribute__ ((deprecated))
  Provides a mechanism for the application to log into the same file
  as the SAL. Useful for allowing Apio to see the information the app
  is seeing/logging.
- 
+
  @param logMsg Message to log
  */
 -(void)logMessage:(NSString *)logMsg;
@@ -310,35 +310,35 @@ __attribute__ ((deprecated))
 /** @name Initialization */
 /**
  Returns the singleton instance of the ApioSDK
- 
+
  @return ApioSDK singleton instance
  */
 + (instancetype)sharedInstance;
 
 /**
  Provide API key for using the Apio SDK
- 
+
  @param apiKey <#apiKey description#>
  */
 - (void)setAPIKey:(NSString*)apiKey;
 
 /**
  Start the SDK with the launch options from the app delegate
- 
+
  @param launchOptions Launch options from app delegate
  */
 - (void)startWithLaunchOptions:(NSDictionary *)launchOptions;
 
 /**
  Enables logging of sensor data for debug purposes
- 
+
  @return TRUE is logging was enabled
  */
 - (BOOL)enableSensorLogging;
 
 /**
  Disables logging of sensor data for debug purposes
- 
+
  */
 - (void)disableSensorLogging;
 
@@ -346,7 +346,7 @@ __attribute__ ((deprecated))
  This represents the absolute file path (File Name inclusive) which is created to
  allow the internal Apio logging. You need to call this before turning logging off,
  since turning off the logging functionality will close the file.
- 
+
  @return The absolute path of the logging file. nil if either the file is closed or has not been created.
  */
 -(NSString *)currentLogFileAbsolutePath;
@@ -356,7 +356,7 @@ __attribute__ ((deprecated))
 
 /**
  Set the speeding event threshold value
- 
+
  @param speed value to set the speeding threshold to
  */
 -(void)setSpeedingThresholdInMPH:(CGFloat)speed;
@@ -365,7 +365,7 @@ __attribute__ ((deprecated))
 
 /**
  Retrieve the speeding threshold
- 
+
  @return Value of the speeding threshold in MPH
  */
 -(CGFloat)speedingThresholdInMPH;
@@ -375,7 +375,7 @@ __attribute__ ((deprecated))
 
 /**
  Enable/Disable cloud features. By default, these features are ENABLED
- 
+
  @param enabled NO to disable cloud
  */
 -(void)setCloudEnabled:(BOOL)enabled;
@@ -415,7 +415,7 @@ __attribute__ ((deprecated))
  it's possible to receive a crash event and then an erroneous 'exit vehicle' event or upon
  vehicle entry there may be multiple 'vehicle entry' events sent.
 
- 
+
  @param enabled NO to disable filtering
  @note This is 'enabled' by default
  */
@@ -423,7 +423,7 @@ __attribute__ ((deprecated))
 
 /**
  Enables generic templates. The state of this is persisted across runs of the framework
- 
+
  @param enabled YES to enable generic templates, NO otherwise
  @note This will cause a re-start of the sensor management framework which can take a few seconds
  */
@@ -431,7 +431,7 @@ __attribute__ ((deprecated))
 
 /**
  Returns whether generic templates are enabled or not
- 
+
  @return YES if generic templates are currently enabled, no otherwise
  */
 - (BOOL)genericTemplatesEnabled;
@@ -441,7 +441,7 @@ __attribute__ ((deprecated))
 
 /**
  Is Car Mode Active?
- 
+
  @return TRUE if car mode is active, false otherwise
  */
 - (BOOL)carModeActive;
@@ -451,18 +451,18 @@ __attribute__ ((deprecated))
 /** @name Event Handling */
 /**
  Retrieve all of the events for a given trip
- 
+
  @param trip Trip to retrieve events for
- 
+
  @return NSArray of APTripEvent objects
  */
 -(NSArray*)eventsForTrip:(APTrip*)trip;
 
 /**
  Retrieve an event given an event ID
- 
+
  @param ID eventID for the event to retrieve
- 
+
  @return APTripEvent for the given ID, nil if the event can't be found
  */
 -(APTripEvent*)eventForID:(NSString*)ID;
