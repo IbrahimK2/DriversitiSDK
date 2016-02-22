@@ -21,12 +21,8 @@
 void DriversitiLog(NSString* format, ...);
 
 
-//#ifdef BEACONS_ENABLED
-//#import "KontaktSDK.h"
-//#endif
-
-#define DRIVERSITI_SDK_VERSION    @"0.9.13.4"
-#define DRIVERSITI_SDK_DATE       @"2016.2.18"
+#define DRIVERSITI_SDK_VERSION    @"0.9.13.5"
+#define DRIVERSITI_SDK_DATE       @"2016.2.22"
 
 #define METERS_PER_SECOND_TO_MPH 2.23694
 
@@ -116,20 +112,46 @@ __attribute__ ((deprecated))
 
  @param carMode             TRUE if Apio has detected the device is in a car.
  @param wasBasedOnDetection TRUE, If the Car mode change was based on sensor detection; FALSE if detected was based on physical movement
- @param wasBasedOnBeacon    TRUE, If the Car mode change was based on beacon detection; FALSE if not based on beacon
+ @param wasBasedOnBeacon    *DEPRECATED* Will always return FALSE
+ @param location            Location of where the event took place
+
+ @deprecated v0.9.13.5
+ 
+ @warning Deprecated in favor of `sensorCarModeDidChange:wasBasedOnDetection:atLocation:`
+
+ */
+- (void)sensorCarModeDidChange:(BOOL)carMode wasBasedOnDetection:(BOOL)wasBasedOnDetection wasBasedOnBeacon:(BOOL)wasBasedOnBeacon atLocation:(CLLocation *)location DEPRECATED_MSG_ATTRIBUTE("use sensorCarModeDidChange:wasBasedOnDetection:atLocation: instead");
+
+/**
+ Tells the delegate that the car mode has changed
+
+ @param carMode             TRUE if Apio has detected the device is in a car.
+ @param wasBasedOnDetection TRUE, If the Car mode change was based on sensor detection; FALSE if detected was based on physical movement
  @param location            Location of where the event took place
  */
-
-- (void)sensorCarModeDidChange:(BOOL)carMode wasBasedOnDetection:(BOOL)wasBasedOnDetection wasBasedOnBeacon:(BOOL)wasBasedOnBeacon atLocation:(CLLocation *)location;
+- (void)sensorCarModeDidChange:(BOOL)carMode wasBasedOnDetection:(BOOL)wasBasedOnDetection atLocation:(CLLocation *)location;
 
 /**
  Tells the delegate that the car has been identified
 
  @param vehicle          the vehicle that has been identified
  @param location         Location of where the event took place
- @param detectedByBeacon TRUE, If the ID was based on beacon detection; FALSE if not based on beacon
+ @param detectedByBeacon *DEPRECTED* Will always return FALSE
+ 
+ @deprecated v0.9.13.5
+
+ @warning Deprecated in favor of `sensorIdentifiedCar:location:`
  */
-- (void)sensorIdentifiedCar:(APVehicle*)vehicle location:(CLLocation *)location detectedByBeacon:(BOOL)detectedByBeacon;
+- (void)sensorIdentifiedCar:(APVehicle*)vehicle location:(CLLocation *)location detectedByBeacon:(BOOL)detectedByBeacon DEPRECATED_MSG_ATTRIBUTE("use sensorIdentifiedCar:location: instead");
+
+/**
+ Tells the delegate that the car has been identified
+
+ @param vehicle          the vehicle that has been identified
+ @param location         Location of where the event took place
+ */
+- (void)sensorIdentifiedCar:(APVehicle*)vehicle location:(CLLocation *)location;
+
 
 /**
  Tells the delegate that a new car has been identified
@@ -200,7 +222,6 @@ __attribute__ ((deprecated))
 
 -(void)remoteSensorConfigurationReceived:(FDataSnapshot *)configureSnapShot;
 
--(void)sensorBeaconProximityChanged:(APBeacon*)beacon;
 -(void)sensorDidExitRegion:(CLRegion*)region;
 -(void)sensorDidEnterRegion:(CLRegion*)region;
 
@@ -280,7 +301,7 @@ __attribute__ ((deprecated))
 @property (nonatomic, weak) id <DriversitiVehicleIdCaptureDelegate>   vehicleCaptureDelegate;
 
 /** The delegate used to detect the phone has been plugged in to a power source */
-@property (nonatomic, weak) id <DriversitiPhoneBatteryDelegate>       batteryChargingDelegate;
+@property (nonatomic, weak) id <DriversitiPhoneBatteryDelegate>       batteryChargingDelegate DEPRECATED_ATTRIBUTE;
 
 #pragma mark Device Modes
 /** @name Device Modes */
@@ -466,20 +487,6 @@ __attribute__ ((deprecated))
  @return APTripEvent for the given ID, nil if the event can't be found
  */
 -(APTripEvent*)eventForID:(NSString*)ID;
-
-#pragma mark - Sensor Handlers
-
-- (void)sensorSuiteWalkingDidChange:(BOOL)isWalking location:(CLLocation *)location;
-- (void)sensorSuiteIdentifiedCar:(NSUInteger)vehicleId location:(CLLocation *)location detectedByBeacon:(BOOL)detectedByBeacon;
-- (void)sensorSuiteCarModeDidChange:(BOOL)carMode wasBasedOnDetection:(BOOL)wasBasedOnDetection wasBasedOnBeacon:(BOOL)wasBasedOnBeacon atLocation:(CLLocation *)location;
-- (void)sensorSuiteSpeedThresholdExceeded:(BOOL)isSpeeding location:(CLLocation *)location;
-- (void)sensorSuiteAccelerationThresholdExceededAtLocation:(CLLocation *)location;
-- (void)sensorSuiteDecelerationThresholdExceededAtLocation:(CLLocation *)location;
-- (void)sensorSuiteEntryDetected:(int)entryType atLocation:(CLLocation *)location  __attribute__ ((deprecated));
-- (void)sensorSuiteHandlingDetected:(int)handlingType atLocation:(CLLocation *)location;
-- (void)sensorSuiteCrashDetectedAtLocation:(CLLocation *)location;
-- (void)sensorSuiteDistractionDetectedAtLocation:(CLLocation *)location;
-- (void)sensorSuiteDistractionStoppedAtLocation:(CLLocation *)location;
 
 @end
 

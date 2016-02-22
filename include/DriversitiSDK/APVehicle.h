@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class APBeacon, APMatchFilter;
+@class APMatchFilter;
 
 @interface APVehicle : NSManagedObject
 
@@ -23,7 +23,6 @@
 @property (nonatomic, retain) NSString * uuid;
 @property (nonatomic, retain) NSString * vin;
 @property (nonatomic, retain) NSNumber * year;
-@property (nonatomic, retain) APBeacon *beacon;
 @property (nonatomic, retain) NSSet *matchFilters;
 @end
 

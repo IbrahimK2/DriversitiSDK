@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "DriversitiSDK"
-  s.version      = "0.9.13.4"
+  s.version      = "0.9.13.5"
   s.summary      = "Driving safety for the mobile generation. Real-time notifications of unsafe driving behaviors."
   s.description  = <<-DESC
                     Transform smartphones from driver's worst enemy to their best friend
@@ -42,8 +42,4 @@ Pod::Spec.new do |s|
 
   end
 
-  s.subspec 'Beacons' do |beacons|
-    beacons.dependency 'KontaktSDK-OLD', '~>6.2'
-    beacons.xcconfig = { 'OTHER_CFLAGS' => '$(inherited) -DBEACONS_ENABLED' }
-  end
 end
