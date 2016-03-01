@@ -25,7 +25,7 @@
 +(NSArray*)eventsForTrip:(APTrip*)trip inContext:(NSManagedObjectContext*)context;
 +(BOOL)crashesForCurrentTrip;
 +(APTripEvent*)eventForID:(NSString*)ID inContext:(NSManagedObjectContext*)context;
-+(NSArray*)eventsToUploadToCloudInContext:(NSManagedObjectContext*)context;
++(NSArray*)eventsToUploadToCloud:(BOOL)bIncludeNoOps inContext:(NSManagedObjectContext*)context;
 +(NSArray*)eventsBetweenStartTime:(NSDate*)startDate andEndTime:(NSDate*)endTime inContext:(NSManagedObjectContext*)context;
 
 @end

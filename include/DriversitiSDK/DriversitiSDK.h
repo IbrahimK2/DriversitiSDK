@@ -21,8 +21,8 @@
 void DriversitiLog(NSString* format, ...);
 
 
-#define DRIVERSITI_SDK_VERSION    @"0.9.13.5"
-#define DRIVERSITI_SDK_DATE       @"2016.2.22"
+#define DRIVERSITI_SDK_VERSION    @"0.9.13.6"
+#define DRIVERSITI_SDK_DATE       @"2016.3.1"
 
 #define METERS_PER_SECOND_TO_MPH 2.23694
 
@@ -116,7 +116,7 @@ __attribute__ ((deprecated))
  @param location            Location of where the event took place
 
  @deprecated v0.9.13.5
- 
+
  @warning Deprecated in favor of `sensorCarModeDidChange:wasBasedOnDetection:atLocation:`
 
  */
@@ -137,7 +137,7 @@ __attribute__ ((deprecated))
  @param vehicle          the vehicle that has been identified
  @param location         Location of where the event took place
  @param detectedByBeacon *DEPRECTED* Will always return FALSE
- 
+
  @deprecated v0.9.13.5
 
  @warning Deprecated in favor of `sensorIdentifiedCar:location:`
