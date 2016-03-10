@@ -8,8 +8,7 @@
 
 #import <CoreLocation/CoreLocation.h>
 #import <CoreMotion/CoreMotion.h>
-//#import "SensorAnalysisLibrary.h"
-#import "APTripEvent+Extension.h"
+#import "APTripEvent+CoreDataProperties.h"
 
 typedef NS_ENUM(NSInteger, ApioEventType)
 {

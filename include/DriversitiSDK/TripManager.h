@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "APTrip+extension.h"
+
+#import "APTrip+CoreDataProperties.h"
+#import "APVehicle+CoreDataProperties.h"
+#import "APSensorData+CoreDataProperties.h"
 
 @interface TripManager : NSObject
 

@@ -2,8 +2,8 @@
 //  APUser+CoreDataProperties.h
 //  DriversitiSDK
 //
-//  Created by Anthony Spinelli on 12/1/15.
-//  Copyright © 2015 Apio. All rights reserved.
+//  Created by Jeff Behrbaum on 3/1/16.
+//  Copyright © 2016 Apio. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
 //  to delete and recreate this implementation file for your updated model.
@@ -12,6 +12,8 @@
 #import "APUser.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
+@class APVehicle;
 
 @interface APUser (CoreDataProperties)
 
@@ -32,6 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *uuid;
 @property (nullable, nonatomic, retain) NSString *zip;
 @property (nullable, nonatomic, retain) NSSet<APEmergencyContact *> *emergencyContacts;
+@property (nullable, nonatomic, retain) NSSet<APVehicle *> *vehiclesRelationship;
 
 @end
 
@@ -41,6 +44,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeEmergencyContactsObject:(APEmergencyContact *)value;
 - (void)addEmergencyContacts:(NSSet<APEmergencyContact *> *)values;
 - (void)removeEmergencyContacts:(NSSet<APEmergencyContact *> *)values;
+
+- (void)addVehiclesRelationshipObject:(APVehicle *)value;
+- (void)removeVehiclesRelationshipObject:(APVehicle *)value;
+- (void)addVehiclesRelationship:(NSSet<APVehicle *> *)values;
+- (void)removeVehiclesRelationship:(NSSet<APVehicle *> *)values;
 
 @end
 

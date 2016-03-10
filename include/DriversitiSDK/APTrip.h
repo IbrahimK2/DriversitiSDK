@@ -9,10 +9,16 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class APTripEvent;
-
 @interface APTrip : NSManagedObject
+	-(id)jsonObject;
 
+	-(double)averageSpeedMPH;
+	-(double)averageSpeedMetersPerSecond;
+	-(double)topSpeedInMetersPerSecond;
+	-(double)totalDistanceInMiles;
+	-(double)totalTimeInSeconds;
+
+/*
 @property (nonatomic, retain) NSNumber * distance;
 @property (nonatomic, retain) NSDate * stopTime;
 @property (nonatomic, retain) NSNumber * cloudState;
@@ -29,5 +35,6 @@
 - (void)removeEventsObject:(APTripEvent *)value;
 - (void)addEvents:(NSSet *)values;
 - (void)removeEvents:(NSSet *)values;
+ */
 
 @end

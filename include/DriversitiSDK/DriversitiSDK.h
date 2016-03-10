@@ -21,8 +21,8 @@
 void DriversitiLog(NSString* format, ...);
 
 
-#define DRIVERSITI_SDK_VERSION    @"0.9.13.7"
-#define DRIVERSITI_SDK_DATE       @"2016.3.8"
+#define DRIVERSITI_SDK_VERSION    @"0.9.13.8"
+#define DRIVERSITI_SDK_DATE       @"2016.3.10"
 
 #define METERS_PER_SECOND_TO_MPH 2.23694
 
@@ -37,17 +37,6 @@ typedef NS_ENUM(NSInteger, CMMotionManagerMotionType)
     MotionTypeRunning=      0x000100,
     MotionTypeCycling=      0x001000,
     MotionTypeAutomotive=   0x010000,
-};
-
-/**
- *  Enumerated return status codes of the SensorAnalysisLibrary functions
- */
-typedef NS_ENUM(NSInteger, CLOUD_STATE)
-{
-	CLOUD_STATE_NO_CHANGE = 0,
-	CLOUD_STATE_ADDED,
-	CLOUD_STATE_MODIFIED,  // Error in signal detection algorithm
-	CLOUD_STATE_DELETED,
 };
 
 typedef struct {

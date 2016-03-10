@@ -9,37 +9,48 @@
 #ifndef apioSDK_ApEventDefs_h
 #define apioSDK_ApEventDefs_h
 
+/**
+ *  Enumerated return status codes of the SensorAnalysisLibrary functions
+ */
+typedef NS_ENUM(NSInteger, CLOUD_STATE)
+{
+	CLOUD_STATE_NO_CHANGE = 0,
+	CLOUD_STATE_ADDED,
+	CLOUD_STATE_MODIFIED,  // Error in signal detection algorithm
+	CLOUD_STATE_DELETED,
+};
+
 typedef NS_ENUM(NSInteger, DriversitiEventType)
 {
-    APEventNone = -1,
-    APEventLocationUpdate=0,
-    APEventWalkingStart=10,
-    APEventWalkingStop,
-    APEventCarModeStartByDetection=20,
-    APEventCarModeStartByVehicleSpeed,
+	APEventNone = -1,
+	APEventLocationUpdate=0,
+	APEventWalkingStart=10,
+	APEventWalkingStop,
+	APEventCarModeStartByDetection=20,
+	APEventCarModeStartByVehicleSpeed,
 	APEventCarModeStartByBeacon DEPRECATED_ATTRIBUTE,
-    APEventCarModeStopByDetection=30,
-    APEventCarModeStopByDetectingWalking,
-    APEventVehicleEntry,
-    APEventIgnition=60,
-    APEventSpeedThresholdExceeded=70,
-    APEventSpeedThresholdRestored,
-    APEventShake,
-    APEventCarIdBySAL,
+	APEventCarModeStopByDetection=30,
+	APEventCarModeStopByDetectingWalking,
+	APEventVehicleEntry,
+	APEventIgnition=60,
+	APEventSpeedThresholdExceeded=70,
+	APEventSpeedThresholdRestored,
+	APEventShake,
+	APEventCarIdBySAL,
 	APEventCarIdByBeacon DEPRECATED_ATTRIBUTE,
-    APEventHardAcceleration=80,
-    APEventHardDeceleration,
-    ApEventCrashDetected,
-    APEventDistractedStart=90,
-    APEventDistractedStop,
-	 APEventGeneralHandlingDetected,
-    APEventGeneralHandlingDetectedNoMotion,
-    APEventPassengerHandlingDetected,
-    APEventPassengerHandlingDetectedNoMotion,
-	 APEventDriverHandlingDetected,
-    APEventDriverHandlingDetectedNoMotion,
-    APEventTripStart=110,
-    APEventTripEnd,
+	APEventHardAcceleration=80,
+	APEventHardDeceleration,
+	ApEventCrashDetected,
+	APEventDistractedStart=90,
+	APEventDistractedStop,
+	APEventGeneralHandlingDetected,
+	APEventGeneralHandlingDetectedNoMotion,
+	APEventPassengerHandlingDetected,
+	APEventPassengerHandlingDetectedNoMotion,
+	APEventDriverHandlingDetected,
+	APEventDriverHandlingDetectedNoMotion,
+	APEventTripStart=110,
+	APEventTripEnd,
 };
 
 //These values are used here to ensure we have consistency

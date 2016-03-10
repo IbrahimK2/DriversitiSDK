@@ -13,6 +13,11 @@
 
 @interface APVehicle : NSManagedObject
 
+	+(NSArray*)sortedVehicles;
+	+(APVehicle*)vehicleForSalIndex:(NSUInteger)salVehicleIndex;
+	-(NSInteger)salVehicleIndex;
+
+/*
 @property (nonatomic, retain) NSNumber * cloudState;
 @property (nonatomic, retain) NSString * color;
 @property (nonatomic, retain) NSString * licensePlate;
@@ -24,8 +29,10 @@
 @property (nonatomic, retain) NSString * vin;
 @property (nonatomic, retain) NSNumber * year;
 @property (nonatomic, retain) NSSet *matchFilters;
+*/
 @end
 
+/*
 @interface APVehicle (CoreDataGeneratedAccessors)
 
 - (void)addMatchFiltersObject:(APMatchFilter *)value;
@@ -34,3 +41,4 @@
 - (void)removeMatchFilters:(NSSet *)values;
 
 @end
+*/

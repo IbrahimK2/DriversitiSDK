@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "APUser.h"
+
+#import "APUser+CoreDataProperties.h"
+#import "APEmergencyContact+CoreDataProperties.h"
 
 @interface UserManager : NSObject
 

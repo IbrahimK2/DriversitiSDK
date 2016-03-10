@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "APVehicle+extension.h"
+#import "APVehicle+CoreDataProperties.h"
 #import "APMatchFilter.h"
 
 @interface VehicleManager : NSObject

@@ -2,8 +2,8 @@
 //  APEmergencyContact+CoreDataProperties.h
 //  DriversitiSDK
 //
-//  Created by Anthony Spinelli on 12/2/15.
-//  Copyright © 2015 Apio. All rights reserved.
+//  Created by Jeff Behrbaum on 3/1/16.
+//  Copyright © 2016 Apio. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
 //  to delete and recreate this implementation file for your updated model.

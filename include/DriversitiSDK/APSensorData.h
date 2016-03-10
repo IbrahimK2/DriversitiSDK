@@ -9,23 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class APTripEvent;
-
 @interface APSensorData : NSManagedObject
+	-(BOOL)readyToUpload;
+	-(void)linkToEventsInContext:(NSManagedObjectContext*)context;
 
-@property (nonatomic, retain) NSNumber * cloudState;
-@property (nonatomic, retain) id eventIdArray;
-@property (nonatomic, retain) id sensorStringArray;
-@property (nonatomic, retain) NSDate * startTime;
-@property (nonatomic, retain) NSDate * endTime;
-@property (nonatomic, retain) NSSet *events;
-@end
-
-@interface APSensorData (CoreDataGeneratedAccessors)
-
-- (void)addEventsObject:(APTripEvent *)value;
-- (void)removeEventsObject:(APTripEvent *)value;
-- (void)addEvents:(NSSet *)values;
-- (void)removeEvents:(NSSet *)values;
+	-(NSDictionary*)jsonObject;
+	+(NSArray*)sensorDataToUploadToCloudInContext:(NSManagedObjectContext*)context;
 
 @end
