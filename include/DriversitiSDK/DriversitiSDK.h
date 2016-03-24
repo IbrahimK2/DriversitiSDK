@@ -18,11 +18,11 @@
 
 @class FDataSnapshot;
 
-void DriversitiLog(NSString* format, ...);
+void DriversitiLog(NSString* _Nonnull format, ...);
 
 
-#define DRIVERSITI_SDK_VERSION    @"0.9.13.8"
-#define DRIVERSITI_SDK_DATE       @"2016.3.10"
+#define DRIVERSITI_SDK_VERSION    @"0.9.13.10"
+#define DRIVERSITI_SDK_DATE       @"2016.3.24"
 
 #define METERS_PER_SECOND_TO_MPH 2.23694
 
@@ -78,15 +78,28 @@ __attribute__ ((deprecated))
  @param sensorData Sensor raw data structure
  @param timestamp  <#timestamp description#>
  @note This function can be used in lieu of ALL of the other delegate functions
+ 
+ @deprecated v0.9.13.9
+
+ @warning Deprecated in favor of specific delegate methods and `sensorSALRawData:timeStamp:`
+
  */
--(void)sensorRawData:(void * const)detections sensorData:(DriversitiSensorData*)sensorData timeStamp:(NSTimeInterval)timestamp;
+-(void)sensorRawData:(void * const _Nullable)detections sensorData:(DriversitiSensorData* _Nullable )sensorData timeStamp:(NSTimeInterval)timestamp DEPRECATED_MSG_ATTRIBUTE("use specific delegate methods instead or sensorSALRawData:timeStamp:");
+
+/**
+ Tells the delegate that sensor data has been analyzed.
+
+ @param currentLocation location when SAL last updated analysis
+ @param timestamp time SAL last updated analysis
+ */
+-(void)sensorSALRawData:(CLLocation * _Nullable)currentLocation timeStamp:(NSTimeInterval)timestamp;
 
 /**
  Tells the delegate that the user's location has been updated
 
  @param location Updated device location
  */
-- (void)sensorLocationUpdate:(CLLocation *)location;
+- (void)sensorLocationUpdate:(CLLocation * _Nullable)location;
 
 /**
  Tells the delegate that the user's walking state has changed
@@ -94,7 +107,7 @@ __attribute__ ((deprecated))
  @param isWalking TRUE if the user is walking
  @param location  Location of event
  */
-- (void)sensorWalkingDidChange:(BOOL)isWalking location:(CLLocation *)location;
+- (void)sensorWalkingDidChange:(BOOL)isWalking location:(CLLocation * _Nullable)location;
 
 /**
  Tells the delegate that the car mode has changed
@@ -109,7 +122,7 @@ __attribute__ ((deprecated))
  @warning Deprecated in favor of `sensorCarModeDidChange:wasBasedOnDetection:atLocation:`
 
  */
-- (void)sensorCarModeDidChange:(BOOL)carMode wasBasedOnDetection:(BOOL)wasBasedOnDetection wasBasedOnBeacon:(BOOL)wasBasedOnBeacon atLocation:(CLLocation *)location DEPRECATED_MSG_ATTRIBUTE("use sensorCarModeDidChange:wasBasedOnDetection:atLocation: instead");
+- (void)sensorCarModeDidChange:(BOOL)carMode wasBasedOnDetection:(BOOL)wasBasedOnDetection wasBasedOnBeacon:(BOOL)wasBasedOnBeacon atLocation:(CLLocation * _Nullable)location DEPRECATED_MSG_ATTRIBUTE("use sensorCarModeDidChange:wasBasedOnDetection:atLocation: instead");
 
 /**
  Tells the delegate that the car mode has changed
@@ -118,7 +131,7 @@ __attribute__ ((deprecated))
  @param wasBasedOnDetection TRUE, If the Car mode change was based on sensor detection; FALSE if detected was based on physical movement
  @param location            Location of where the event took place
  */
-- (void)sensorCarModeDidChange:(BOOL)carMode wasBasedOnDetection:(BOOL)wasBasedOnDetection atLocation:(CLLocation *)location;
+- (void)sensorCarModeDidChange:(BOOL)carMode wasBasedOnDetection:(BOOL)wasBasedOnDetection atLocation:(CLLocation * _Nullable)location;
 
 /**
  Tells the delegate that the car has been identified
@@ -131,7 +144,7 @@ __attribute__ ((deprecated))
 
  @warning Deprecated in favor of `sensorIdentifiedCar:location:`
  */
-- (void)sensorIdentifiedCar:(APVehicle*)vehicle location:(CLLocation *)location detectedByBeacon:(BOOL)detectedByBeacon DEPRECATED_MSG_ATTRIBUTE("use sensorIdentifiedCar:location: instead");
+- (void)sensorIdentifiedCar:(APVehicle* _Nullable)vehicle location:(CLLocation * _Nullable)location detectedByBeacon:(BOOL)detectedByBeacon DEPRECATED_MSG_ATTRIBUTE("use sensorIdentifiedCar:location: instead");
 
 /**
  Tells the delegate that the car has been identified
@@ -139,7 +152,7 @@ __attribute__ ((deprecated))
  @param vehicle          the vehicle that has been identified
  @param location         Location of where the event took place
  */
-- (void)sensorIdentifiedCar:(APVehicle*)vehicle location:(CLLocation *)location;
+- (void)sensorIdentifiedCar:(APVehicle* _Nullable)vehicle location:(CLLocation * _Nullable)location;
 
 
 /**
@@ -148,14 +161,14 @@ __attribute__ ((deprecated))
  @param vehicle          the vehicle that has been identified
  @param location         Location of where the event took place
  */
-- (void)sensorIdentifiedNewCar:(APVehicle*)vehicle location:(CLLocation *)location;
+- (void)sensorIdentifiedNewCar:(APVehicle* _Nullable)vehicle location:(CLLocation * _Nullable)location;
 
 /**
  Tells the delegate that vehicle ignition was detected
 
  @param location Location of where the event took place
  */
-- (void)sensorVehicleIgnitionDetectedAtLocation:(CLLocation *)location;
+- (void)sensorVehicleIgnitionDetectedAtLocation:(CLLocation * _Nullable)location;
 
 /**
  Tells the delegate that the vehicle's speed has gone above or fallen below the speeding threshold
@@ -163,62 +176,62 @@ __attribute__ ((deprecated))
  @param isSpeeding TRUE if the user is exceeding the speeding threshold
  @param location   Location of where the event took place, including the speed in m/s
  */
-- (void)sensorSpeedThresholdExceeded:(BOOL)isSpeeding location:(CLLocation *)location;
+- (void)sensorSpeedThresholdExceeded:(BOOL)isSpeeding location:(CLLocation * _Nullable)location;
 
 /**
   Tells the delegate that the vehicle's acceleration has exceeded the safe threshold.
  @param location   Location of where the event took place, including the speed in m/s
  */
-- (void)sensorAccelerationThresholdExceededAtLocation:(CLLocation *)location;
+- (void)sensorAccelerationThresholdExceededAtLocation:(CLLocation * _Nullable)location;
 
 /**
  Tells the delegate that the vehicle's deceleration has exceeded the safe threshold.
  @param location   Location of where the event took place, including the speed in m/s
  */
-- (void)sensorDecelerationThresholdExceededAtLocation:(CLLocation *)location;
+- (void)sensorDecelerationThresholdExceededAtLocation:(CLLocation * _Nullable)location;
 
 /**
  Tells the delegate that phone handling was detected.
  @param handlingType	The type of handling, whether by the driver(Handling, texting, phone call) or passenger(Handling, texting, phone call)
  @param location   Location of where the event took place, including the speed in m/s
  */
-- (void)sensorHandlingDetected:(DriversitiHandlingAwareness)handlingType atLocation:(CLLocation *)location;
+- (void)sensorHandlingDetected:(DriversitiHandlingAwareness)handlingType atLocation:(CLLocation * _Nullable)location;
 
 /**
  Tells the delegate that vehicle entry was detected.
  @param eEntryPosition	This is the point the user entered from.  left(Front,back), right(Front,back)
  @param location   Location of where the event took place, including the speed in m/s
  */
-- (void)sensorVehicleEntryDetected:(DriversitiEntryAwareness)eEntryPosition atLocation:(CLLocation *)location  __attribute__ ((deprecated));;
+- (void)sensorVehicleEntryDetected:(DriversitiEntryAwareness)eEntryPosition atLocation:(CLLocation * _Nullable)location  __attribute__ ((deprecated));;
 
 /**
  Tells the delegate that a crash was detected.
  @param location   Location of where the event took place, including the speed in m/s
  */
-- (void)sensorCrashDetectedAtLocation:(CLLocation *)location;
+- (void)sensorCrashDetectedAtLocation:(CLLocation * _Nullable)location;
 
 /**
  Tells the delegate that the driver appears distracted
  @param location   Location of where the event took place, including the speed in m/s
  */
-- (void)sensorDistractionDetectedAtLocation:(CLLocation *)location;
+- (void)sensorDistractionDetectedAtLocation:(CLLocation * _Nullable)location;
 
 /**
  Tells the delegate that the driver no longer appears distracted.
  @param location   Location of where the event took place, including the speed in m/s
  */
-- (void)sensorDistractionStoppedAtLocation:(CLLocation *)location;
+- (void)sensorDistractionStoppedAtLocation:(CLLocation * _Nullable)location;
 
--(void)remoteSensorConfigurationReceived:(FDataSnapshot *)configureSnapShot;
+-(void)remoteSensorConfigurationReceived:(FDataSnapshot * _Nullable)configureSnapShot;
 
--(void)sensorDidExitRegion:(CLRegion*)region;
--(void)sensorDidEnterRegion:(CLRegion*)region;
+-(void)sensorDidExitRegion:(CLRegion* _Nullable)region;
+-(void)sensorDidEnterRegion:(CLRegion* _Nullable)region;
 
 /**
  Tells the delegate that the sensor suite was unable to run
  @param error Error indicating why the sensor suite stopped running
  */
-- (void)sensorDidFailWithError:(NSError *)error;
+- (void)sensorDidFailWithError:(NSError * _Nullable)error;
 
 @end
 
@@ -231,7 +244,7 @@ __attribute__ ((deprecated))
  *
  *  @param error Error value indicating while vehicle ID capture failed
  */
-- (void)vehicleIdCaptureDidFailWithError:(NSError *)error;
+- (void)vehicleIdCaptureDidFailWithError:(NSError * _Nullable)error;
 
 @end
 
@@ -251,7 +264,9 @@ __attribute__ ((deprecated))
 
 @interface DriversitiSDK : NSObject
 
-+(NSString*)salVersion;
++(NSString* _Nullable)salVersion;
+
++(NSString* _Nullable)sdkVersion;
 
 /**
  Provides a mechanism for the application to log into the same file
@@ -260,7 +275,15 @@ __attribute__ ((deprecated))
 
  @param logMsg Message to log
  */
--(void)logMessage:(NSString *)logMsg;
+-(void)logMessage:(NSString * _Nullable)logMsg;
+
+/**
+ Enable the SDK to automatically start and stop trips with no integrator's interaction.
+ This will cause trips to corresponds 1 for 1 with carMode ON/OFF events.
+ 
+ Defaults to true. Set to false to manually control trip start/stop
+ */
+@property(nonatomic, assign) BOOL autoHandleTripStartStop;
 
 /**
  Set to TRUE to enable power saving mode. Will only activave power saving mode if the
@@ -278,19 +301,19 @@ __attribute__ ((deprecated))
 /**
  Provides the SAL Version so the SDK caller can retrieve that information.
 */
-@property (nonatomic, readonly) NSString *salVersion;
+@property (nonatomic, readonly) NSString * _Nullable salVersion;
 
-@property (nonatomic, strong) NSOperationQueue* operationQueue;
+@property (nonatomic, strong) NSOperationQueue* _Nullable operationQueue;
 
 #pragma mark Sensor Delegate
 /** The delegate used to capture all reported APIO events */
-@property (nonatomic, weak) id <DriversitiSensorDelegate>             sensorDelegate;
+@property (nonatomic, weak) id <DriversitiSensorDelegate>  _Nullable           sensorDelegate;
 
 /** The delegate used to capture vehicle ID capture start and/or error events */
-@property (nonatomic, weak) id <DriversitiVehicleIdCaptureDelegate>   vehicleCaptureDelegate;
+@property (nonatomic, weak) id <DriversitiVehicleIdCaptureDelegate> _Nullable  vehicleCaptureDelegate;
 
 /** The delegate used to detect the phone has been plugged in to a power source */
-@property (nonatomic, weak) id <DriversitiPhoneBatteryDelegate>       batteryChargingDelegate DEPRECATED_ATTRIBUTE;
+@property (nonatomic, weak) id <DriversitiPhoneBatteryDelegate>  _Nullable     batteryChargingDelegate DEPRECATED_ATTRIBUTE;
 
 #pragma mark Device Modes
 /** @name Device Modes */
@@ -323,21 +346,21 @@ __attribute__ ((deprecated))
 
  @return ApioSDK singleton instance
  */
-+ (instancetype)sharedInstance;
++ (instancetype _Nonnull)sharedInstance;
 
 /**
  Provide API key for using the Apio SDK
 
  @param apiKey <#apiKey description#>
  */
-- (void)setAPIKey:(NSString*)apiKey;
+- (void)setAPIKey:(NSString* _Nullable)apiKey;
 
 /**
  Start the SDK with the launch options from the app delegate
 
  @param launchOptions Launch options from app delegate
  */
-- (void)startWithLaunchOptions:(NSDictionary *)launchOptions;
+- (void)startWithLaunchOptions:(NSDictionary * _Nullable)launchOptions;
 
 /**
  Enables logging of sensor data for debug purposes
@@ -359,7 +382,7 @@ __attribute__ ((deprecated))
 
  @return The absolute path of the logging file. nil if either the file is closed or has not been created.
  */
--(NSString *)currentLogFileAbsolutePath;
+-(NSString * _Nullable)currentLogFileAbsolutePath;
 
 /** @name Settings */
 #pragma mark - Settings
@@ -371,7 +394,6 @@ __attribute__ ((deprecated))
  */
 -(void)setSpeedingThresholdInMPH:(CGFloat)speed;
 -(void)setSpeedingThresholdInMPS:(CGFloat)speed;//Meters per Second
-
 
 /**
  Retrieve the speeding threshold
@@ -466,7 +488,7 @@ __attribute__ ((deprecated))
 
  @return NSArray of APTripEvent objects
  */
--(NSArray*)eventsForTrip:(APTrip*)trip;
+-(NSArray* _Nullable)eventsForTrip:(APTrip* _Nullable)trip;
 
 /**
  Retrieve an event given an event ID
@@ -475,7 +497,7 @@ __attribute__ ((deprecated))
 
  @return APTripEvent for the given ID, nil if the event can't be found
  */
--(APTripEvent*)eventForID:(NSString*)ID;
+-(APTripEvent* _Nullable)eventForID:(NSString* _Nullable)ID;
 
 @end
 

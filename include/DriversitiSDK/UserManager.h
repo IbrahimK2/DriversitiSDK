@@ -13,13 +13,13 @@
 
 @interface UserManager : NSObject
 
-+ (instancetype)sharedInstance;
++ (instancetype _Nonnull)sharedInstance;
 
 /**
  Set to TRUE to enable the SDK to run without a user
  */
 @property (nonatomic, assign) BOOL allowAnonymousUser;
-@property (nonatomic, readonly) APUser *currentUser;
+@property (nonatomic, readonly) APUser * _Nullable currentUser;
 
 /**
  Log in a user
@@ -28,13 +28,13 @@
  @param companyId   The company ID for the user logging in
  @param block       Completion block; returns an error value or nil for no error
  */
--(void)loginUser:(NSString*)username password:(NSString*)password companyId:(NSString*)companyId completionBlock:(void (^)(NSError *error))block;
+-(void)loginUser:(NSString* _Nullable)username password:(NSString* _Nullable)password companyId:(NSString* _Nullable)companyId completionBlock:(void (^ _Nullable)(NSError * _Nullable error)) block;
 
 /**
  Logs out user that is logged in
  @param block       Completion block; returns an error value or nil for no error
  */
--(void)logoutActiveUserWithCompletionBlock:(void (^)(NSError *error))block;
+-(void)logoutActiveUserWithCompletionBlock:(void (^ _Nullable)(NSError * _Nullable error))block;
 
 /**
  Register a user with the Driversiti cloud
@@ -54,20 +54,20 @@
  @param companyId     User's company identifier
  @param block         Completion block; returns an error value or nil for no error
  */
-- (void)userRegisterWithEmailAddress:(NSString*)email
-                            password:(NSString*)password
-                           firstName:(NSString *)firstName
-                          middleName:(NSString*)middleName
-                            lastName:(NSString*)lastName
-                       streetAddress:(NSString*)streetAddress
-                                city:(NSString*)city
-                               state:(NSString*)state
-                             country:(NSString*)country
-                             zipcode:(NSString*)zipcode
-                         phoneNumber:(NSString*)phoneNumber
-                            username:(NSString*)username
-                           companyId:(NSString*)companyId
-                     completionBlock:(void (^)(NSError *error))block;
+- (void)userRegisterWithEmailAddress:(NSString* _Nullable)email
+                            password:(NSString* _Nullable)password
+                           firstName:(NSString* _Nullable)firstName
+                          middleName:(NSString* _Nullable)middleName
+                            lastName:(NSString* _Nullable)lastName
+                       streetAddress:(NSString* _Nullable)streetAddress
+                                city:(NSString* _Nullable)city
+                               state:(NSString* _Nullable)state
+                             country:(NSString* _Nullable)country
+                             zipcode:(NSString* _Nullable)zipcode
+                         phoneNumber:(NSString* _Nullable)phoneNumber
+                            username:(NSString* _Nullable)username
+                           companyId:(NSString* _Nullable)companyId
+                     completionBlock:(void (^ _Nullable)(NSError * _Nullable error))block;
 
 /**
  Update a cloud user
@@ -86,27 +86,27 @@
  @param companyId     User's updated company identifier
  @param block         Completion block
  */
-- (void)userUpdateWithUuid:(NSString*)uuid
-              emailAddress:(NSString*)email
-                  password:(NSString *)password
-                 firstName:(NSString *)firstName
-                  lastName:(NSString*)lastName
-             streetAddress:(NSString*)streetAddress
-                      city:(NSString*)city
-                     state:(NSString*)state
-                   country:(NSString*)country
-                   zipcode:(NSString*)zipcode
-               phoneNumber:(NSString *)phoneNumber
-                 companyId:(NSString*)companyId
-           completionBlock:(void (^)(NSError *error))block;
+- (void)userUpdateWithUuid:(NSString* _Nullable)uuid
+              emailAddress:(NSString* _Nullable)email
+                  password:(NSString * _Nullable)password
+                 firstName:(NSString * _Nullable)firstName
+                  lastName:(NSString* _Nullable)lastName
+             streetAddress:(NSString* _Nullable)streetAddress
+                      city:(NSString* _Nullable)city
+                     state:(NSString* _Nullable)state
+                   country:(NSString* _Nullable)country
+                   zipcode:(NSString* _Nullable)zipcode
+               phoneNumber:(NSString * _Nullable)phoneNumber
+                 companyId:(NSString* _Nullable)companyId
+           completionBlock:(void (^ _Nullable)(NSError * _Nullable error))block;
 
--(void)driverScoreBetweenTimes:(NSDate*)startTime andEndTime:(NSDate*)endTime completionBlock:(void (^)(NSError *error,NSDictionary *scoringDict))block;
+-(void)driverScoreBetweenTimes:(NSDate* _Nullable)startTime andEndTime:(NSDate* _Nullable)endTime completionBlock:(void (^ _Nullable)(NSError * _Nullable error,NSDictionary * _Nullable scoringDict))block;
 
--(BOOL)updateEmergencyContactWithFirstName:(NSString*)firstName lastName:(NSString*)lastName
-												 phone:(NSString*)phone email:(NSString*)email;
+-(BOOL)updateEmergencyContactWithFirstName:(NSString* _Nullable)firstName lastName:(NSString* _Nullable)lastName
+												 phone:(NSString* _Nullable)phone email:(NSString* _Nullable)email;
 
-- (BOOL)addEmergencyContactWithFirstName:(NSString*)firstName lastName:(NSString*)lastName
-                                   phone:(NSString*)phone email:(NSString*)email;
-- (BOOL)removeEmergencyContact:(APEmergencyContact*)contact;
+- (BOOL)addEmergencyContactWithFirstName:(NSString* _Nullable)firstName lastName:(NSString* _Nullable)lastName
+                                   phone:(NSString* _Nullable)phone email:(NSString* _Nullable)email;
+- (BOOL)removeEmergencyContact:(APEmergencyContact* _Nullable)contact;
 
 @end

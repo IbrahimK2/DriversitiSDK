@@ -21,6 +21,11 @@
 							  location:(CLLocation*)location
 							 inContext:(NSManagedObjectContext*)context;
 
+	+(void)endTripWithoutAStopTime:(APTrip *)theTrip
+								timestamp:(NSDate*)timestamp
+									location:(CLLocation*)location
+								inContext:(NSManagedObjectContext*)context;
+
 	-(id)jsonObject;
 	-(NSString *)jsonEventType;
 	-(void)addFreeformParameter:(id)object forKey:(NSString*)key;

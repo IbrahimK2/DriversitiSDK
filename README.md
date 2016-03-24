@@ -147,25 +147,10 @@ To receive real-time event notifications, the host application will need to regi
 
 Once everything is setup, the host application should call the ``-startDataCollection`` method on ``DriversitiSDK``.  Notice of events will flow into the host application through the ``DriversitiSensorDelegate``.
 
-**To receive further event notices once DriversitiSDK detects the user is in a moving vehicle, the host application must invoke the start and stop trip methods on TripManager**
+~~To receive further event notices once DriversitiSDK detects the user is in a moving vehicle, the host application must invoke the start and stop trip methods on TripManager~~_[Obsolete as of 0.9.13.10]_
 
-For example, a typical implementation for the ``sensorCarModeDidChange:wasBasedOnDetection:wasBasedOnBeacon:atLocation:`` of the ``DriversitiSensorDelegate`` is below
+As of 0.9.13.10, host applications no longer need to manually start and stop trips. By default, this is handled automatically by the SDK and a trip will be started and stopped in correlation with Car Mode notifications. For apps that wish to manually handle starting and stopping of trips, please use the following after setting your API key.
 
 ```objective-c
--(void)sensorCarModeDidChange:(BOOL)carMode wasBasedOnDetection:(BOOL)wasBasedOnDetection wasBasedOnBeacon:(BOOL)wasBasedOnBeacon atLocation:(CLLocation *)location
-{
-	// Handle Host app specific Car Mode Notification
-
-  APVehicle * vehicle = ...
-
-  // If host app wants to record this trip, invoke the following
-	if (carMode)
-	{
-		[[TripManager sharedInstance] startTripForVehicle:vehicle startTime:[NSDate date]];
-	}
-	else
-	{
-		[[TripManager sharedInstance] stopTripAtTime:[NSDate date]];
-	}
-}
+[[DriversitiSDK sharedInstance] setAutoHandleTripStartStop:FALSE];
 ```
