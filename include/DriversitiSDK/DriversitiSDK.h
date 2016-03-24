@@ -21,7 +21,7 @@
 void DriversitiLog(NSString* _Nonnull format, ...);
 
 
-#define DRIVERSITI_SDK_VERSION    @"0.9.13.10"
+#define DRIVERSITI_SDK_VERSION    @"0.9.13.11"
 #define DRIVERSITI_SDK_DATE       @"2016.3.24"
 
 #define METERS_PER_SECOND_TO_MPH 2.23694
