@@ -21,8 +21,8 @@
 void DriversitiLog(NSString* _Nonnull format, ...);
 
 
-#define DRIVERSITI_SDK_VERSION    @"0.9.13.11"
-#define DRIVERSITI_SDK_DATE       @"2016.3.24"
+#define DRIVERSITI_SDK_VERSION    @"0.9.14"
+#define DRIVERSITI_SDK_DATE       @"2016.4.21"
 
 #define METERS_PER_SECOND_TO_MPH 2.23694
 
@@ -78,7 +78,7 @@ __attribute__ ((deprecated))
  @param sensorData Sensor raw data structure
  @param timestamp  <#timestamp description#>
  @note This function can be used in lieu of ALL of the other delegate functions
- 
+
  @deprecated v0.9.13.9
 
  @warning Deprecated in favor of specific delegate methods and `sensorSALRawData:timeStamp:`
@@ -280,7 +280,7 @@ __attribute__ ((deprecated))
 /**
  Enable the SDK to automatically start and stop trips with no integrator's interaction.
  This will cause trips to corresponds 1 for 1 with carMode ON/OFF events.
- 
+
  Defaults to true. Set to false to manually control trip start/stop
  */
 @property(nonatomic, assign) BOOL autoHandleTripStartStop;

@@ -43,6 +43,8 @@
 
 -(NSArray* _Nullable)tripsSortedByDate;
 
+-(void)updateTripsVehicleUUID:(NSString * _Nullable)vehUUID;
+
 /**
  Remove a trip from local data store
  

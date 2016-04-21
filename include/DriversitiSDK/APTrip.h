@@ -10,31 +10,19 @@
 #import <CoreData/CoreData.h>
 
 @interface APTrip : NSManagedObject
-	-(id)jsonObject;
+	//-(id)jsonObject;
+	-(id)jsonTripObject;
 
+	/**
+	 Driversiti Score for this trip. Scores are calculated at the end of a trip based on various elements, including
+	 events, event types, event durations, and trip durations. Scores will not be available until after a trip has ended.
+
+	 @return score for this trip on a scale of 0-100. Returns a negative value if the score cannot be computed
+	 */
+	-(double)tripScore;
 	-(double)averageSpeedMPH;
 	-(double)averageSpeedMetersPerSecond;
 	-(double)topSpeedInMetersPerSecond;
 	-(double)totalDistanceInMiles;
 	-(double)totalTimeInSeconds;
-
-/*
-@property (nonatomic, retain) NSNumber * distance;
-@property (nonatomic, retain) NSDate * stopTime;
-@property (nonatomic, retain) NSNumber * cloudState;
-@property (nonatomic, retain) NSDate * startTime;
-@property (nonatomic, retain) NSNumber * topSpeedMPH;
-@property (nonatomic, retain) NSString * tripID;
-@property (nonatomic, retain) NSString * vehicleUuid;
-@property (nonatomic, retain) NSSet *events;
-@end
-
-@interface APTrip (CoreDataGeneratedAccessors)
-
-- (void)addEventsObject:(APTripEvent *)value;
-- (void)removeEventsObject:(APTripEvent *)value;
-- (void)addEvents:(NSSet *)values;
-- (void)removeEvents:(NSSet *)values;
- */
-
 @end
