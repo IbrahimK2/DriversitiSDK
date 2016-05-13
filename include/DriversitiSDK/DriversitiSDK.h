@@ -21,8 +21,8 @@
 void DriversitiLog(NSString* _Nonnull format, ...);
 
 
-#define DRIVERSITI_SDK_VERSION    @"0.9.14"
-#define DRIVERSITI_SDK_DATE       @"2016.4.21"
+#define DRIVERSITI_SDK_VERSION    @"0.9.15"
+#define DRIVERSITI_SDK_DATE       @"2016.5.2"
 
 #define METERS_PER_SECOND_TO_MPH 2.23694
 
@@ -80,11 +80,12 @@ __attribute__ ((deprecated))
  @note This function can be used in lieu of ALL of the other delegate functions
 
  @deprecated v0.9.13.9
+ @unavailable v0.9.15
 
  @warning Deprecated in favor of specific delegate methods and `sensorSALRawData:timeStamp:`
 
  */
--(void)sensorRawData:(void * const _Nullable)detections sensorData:(DriversitiSensorData* _Nullable )sensorData timeStamp:(NSTimeInterval)timestamp DEPRECATED_MSG_ATTRIBUTE("use specific delegate methods instead or sensorSALRawData:timeStamp:");
+-(void)sensorRawData:(void * const _Nullable)detections sensorData:(DriversitiSensorData* _Nullable )sensorData timeStamp:(NSTimeInterval)timestamp UNAVAILABLE_ATTRIBUTE;
 
 /**
  Tells the delegate that sensor data has been analyzed.
@@ -98,8 +99,12 @@ __attribute__ ((deprecated))
  Tells the delegate that the user's location has been updated
 
  @param location Updated device location
+ 
+ @deprecated v0.9.15
+ @warning Deprecated in favor of CoreLocation manager
+
  */
-- (void)sensorLocationUpdate:(CLLocation * _Nullable)location;
+- (void)sensorLocationUpdate:(CLLocation * _Nullable)location DEPRECATED_MSG_ATTRIBUTE("use CoreLocation manager instead");
 
 /**
  Tells the delegate that the user's walking state has changed
@@ -118,11 +123,12 @@ __attribute__ ((deprecated))
  @param location            Location of where the event took place
 
  @deprecated v0.9.13.5
+ @unavailable v0.9.15
 
  @warning Deprecated in favor of `sensorCarModeDidChange:wasBasedOnDetection:atLocation:`
 
  */
-- (void)sensorCarModeDidChange:(BOOL)carMode wasBasedOnDetection:(BOOL)wasBasedOnDetection wasBasedOnBeacon:(BOOL)wasBasedOnBeacon atLocation:(CLLocation * _Nullable)location DEPRECATED_MSG_ATTRIBUTE("use sensorCarModeDidChange:wasBasedOnDetection:atLocation: instead");
+- (void)sensorCarModeDidChange:(BOOL)carMode wasBasedOnDetection:(BOOL)wasBasedOnDetection wasBasedOnBeacon:(BOOL)wasBasedOnBeacon atLocation:(CLLocation * _Nullable)location UNAVAILABLE_ATTRIBUTE;
 
 /**
  Tells the delegate that the car mode has changed
@@ -141,10 +147,11 @@ __attribute__ ((deprecated))
  @param detectedByBeacon *DEPRECTED* Will always return FALSE
 
  @deprecated v0.9.13.5
+ @unavailable v0.9.15
 
  @warning Deprecated in favor of `sensorIdentifiedCar:location:`
  */
-- (void)sensorIdentifiedCar:(APVehicle* _Nullable)vehicle location:(CLLocation * _Nullable)location detectedByBeacon:(BOOL)detectedByBeacon DEPRECATED_MSG_ATTRIBUTE("use sensorIdentifiedCar:location: instead");
+- (void)sensorIdentifiedCar:(APVehicle* _Nullable)vehicle location:(CLLocation * _Nullable)location detectedByBeacon:(BOOL)detectedByBeacon UNAVAILABLE_ATTRIBUTE;
 
 /**
  Tells the delegate that the car has been identified
