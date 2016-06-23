@@ -9,11 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@interface APSensorData : NSManagedObject
-	-(BOOL)readyToUpload;
-	-(void)linkToEventsInContext:(NSManagedObjectContext*)context;
+#import "DriversitiEventDefs.h"
 
-	-(NSDictionary*)jsonObject;
-	+(NSArray*)sensorDataToUploadToCloudInContext:(NSManagedObjectContext*)context;
+@interface APSensorData : NSManagedObject
+
+-(BOOL)hasValidSensorDataToUpload;
+
+-(NSDictionary*)jsonObject;
++(NSArray*)sensorDataToUploadToCloudInContext:(NSManagedObjectContext*)context;
++(NSArray*)sensorDataInContext:(NSManagedObjectContext*)context state:(CLOUD_STATE)eState;
 
 @end

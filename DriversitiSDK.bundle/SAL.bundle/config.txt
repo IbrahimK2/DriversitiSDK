@@ -1,0 +1,11 @@
+RFHBclassifier RandomForestHB.txt
+DDadaBoost DDAdaboost.txt
+RFCrashClassifier crashNewRF.txt
+LogMaxSize 524288000
+RFLCclassfierSept SeptemberRandForOriginal4.txt
+DDMagAdaBoost DDMagAdaboost.txt
+RFHandlClassifier RF_HA_9Features_333VS.txt
+RFHandlClassifier409 RandF_HA_9Features_409VS.txt
+RFHandlClassifier469 RandF_HA_9Features_469VS.txt
+RFHandlClassifier212 randomForestHandling212.txt
+RFLCclassifier RandomForretstLC.txt

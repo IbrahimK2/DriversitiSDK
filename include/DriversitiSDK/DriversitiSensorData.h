@@ -30,6 +30,7 @@ typedef NS_ENUM(NSInteger, ApioEventType)
 /**
  *  An APSensorData object encapsulates the collected sensor data.
  */
+__attribute__ ((deprecated))
 @interface DriversitiSensorData : NSObject
 
 @property(nonatomic) NSInteger eGpsMonitoringState;//In high precision, georegion, off
@@ -54,18 +55,14 @@ typedef NS_ENUM(NSInteger, ApioEventType)
 @property (nonatomic, strong)   NSString *vehicleUUID;
 @property (nonatomic, assign)   ApioEventType eventType;
 
-@property (nonatomic, assign)   BOOL isSpeeding;
-@property (nonatomic, assign)   BOOL isUnsafeAcceleration;
-@property (nonatomic, assign)   BOOL isUnsafeDeceleration;
-
-- (NSString*)toString;
+-(NSString*)toString;
 
 /**
  *  Returns a pointer to a SALSensorData struct for use by the Sensor Analysis
  *  Library. Note that this pointer is valid only for the lifetime of the
  *  APSensorData object.
  */
-- (void *)salSensorData;
+//- (void *)salSensorData;
 
 /**
  Returns an initialized APSensorData object.

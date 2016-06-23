@@ -2,11 +2,11 @@
 
 The DriversitiSDK for iOS enables Driversiti customers track driver behavior and receive real-time event notifications for enrolled drivers and vehicles. In addition to real-time notifications, these behaviors and events are uploaded to Driversiti's hosted cloud, allowing Driversiti's customers later access to the behaviors and overall driving scores of their company's drivers.
 
-DriversitiSDK also employs Driversiti's patented real-time crash detection to notify the host application if DriversitiSDK detects a vehicle crash using the phone's sensors.
+DriversitiSDK employs Driversiti's patented real-time crash detection to notify the host application if DriversitiSDK detects a vehicle crash using the phone's sensors.
 
 ## Requirements and Supported Devices for iOS Version
 - iOS 7.1 and higher
-- iPhone 5S, 6, 6 Plus, 6S, and 6S Plus
+- iPhone 5S, SE, 6, 6 Plus, 6S, and 6S Plus
 - Host application must enable the `location` UIBackgroundMode and location always usage
 - If prompted, the user must allow access to GPS in background and access to the Activity Monitor.
 
@@ -147,11 +147,3 @@ Importantly, ``{COMPANY}`` will need to be set to the Company name specified to 
 To receive real-time event notifications, the host application will need to register an instance conforming to the ``DriversitiSensorDelegate`` protocol using the ``sensorDelegate`` property on ``DriversitiSDK``.
 
 Once everything is setup, the host application should call the ``-startDataCollection`` method on ``DriversitiSDK``.  Notice of events will flow into the host application through the ``DriversitiSensorDelegate``.
-
-~~To receive further event notices once DriversitiSDK detects the user is in a moving vehicle, the host application must invoke the start and stop trip methods on TripManager~~_[Obsolete as of 0.9.13.10]_
-
-As of 0.9.13.10, host applications no longer need to manually start and stop trips. By default, this is handled automatically by the SDK and a trip will be started and stopped in correlation with Car Mode notifications. For apps that wish to manually handle starting and stopping of trips, please use the following after setting your API key.
-
-```objective-c
-[[DriversitiSDK sharedInstance] setAutoHandleTripStartStop:FALSE];
-```

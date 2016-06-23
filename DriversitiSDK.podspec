@@ -1,7 +1,6 @@
-
 Pod::Spec.new do |s|
   s.name         = "DriversitiSDK"
-  s.version      = "0.9.17"
+  s.version      = "1.0.6"
   s.summary      = "Driving safety for the mobile generation. Real-time notifications of unsafe driving behaviors."
   s.description  = <<-DESC
                     Transform smartphones from driver's worst enemy to their best friend
@@ -32,6 +31,7 @@ Pod::Spec.new do |s|
 
   s.dependency 'MagicalRecord','~>2.2'
   s.dependency 'AFNetworking', '~> 2.5'
+  s.dependency 'AFNetworkActivityLogger'
   s.dependency 'AFgzipRequestSerializer'
   s.dependency 'Firebase', '~> 2.5.1'
   s.default_subspec = 'Lite'

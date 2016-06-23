@@ -9,36 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class APMatchFilter;
-
 @interface APVehicle : NSManagedObject
-
 	+(NSArray*)sortedVehicles;
 	+(APVehicle*)vehicleForSalIndex:(NSUInteger)salVehicleIndex;
 	-(NSInteger)salVehicleIndex;
-
-/*
-@property (nonatomic, retain) NSNumber * cloudState;
-@property (nonatomic, retain) NSString * color;
-@property (nonatomic, retain) NSString * licensePlate;
-@property (nonatomic, retain) NSString * make;
-@property (nonatomic, retain) NSString * model;
-@property (nonatomic, retain) NSNumber * mpg;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * uuid;
-@property (nonatomic, retain) NSString * vin;
-@property (nonatomic, retain) NSNumber * year;
-@property (nonatomic, retain) NSSet *matchFilters;
-*/
 @end
-
-/*
-@interface APVehicle (CoreDataGeneratedAccessors)
-
-- (void)addMatchFiltersObject:(APMatchFilter *)value;
-- (void)removeMatchFiltersObject:(APMatchFilter *)value;
-- (void)addMatchFilters:(NSSet *)values;
-- (void)removeMatchFilters:(NSSet *)values;
-
-@end
-*/

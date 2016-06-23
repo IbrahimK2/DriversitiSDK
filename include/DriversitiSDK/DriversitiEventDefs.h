@@ -9,46 +9,39 @@
 #ifndef apioSDK_ApEventDefs_h
 #define apioSDK_ApEventDefs_h
 
-/**
- *  Enumerated return status codes of the SensorAnalysisLibrary functions
- */
-typedef NS_ENUM(NSInteger, CLOUD_STATE)
-{
-	CLOUD_STATE_NO_CHANGE = 0,
-	CLOUD_STATE_ADDED,
-	CLOUD_STATE_MODIFIED,  // Error in signal detection algorithm
-	CLOUD_STATE_DELETED,
-};
-
 typedef NS_ENUM(NSInteger, DriversitiEventType)
 {
-	APEventNone = -1,
-	APEventLocationUpdate=0,
-	APEventWalkingStart=10,
-	APEventWalkingStop,
-	APEventCarModeStartByDetection=20,
-	APEventCarModeStartByVehicleSpeed,
-	APEventCarModeStopByDetection=30,
-	APEventCarModeStopByDetectingWalking,
-	APEventVehicleEntry,
-	APEventIgnition=60,
-	APEventSpeedThresholdExceeded=70,
-	APEventSpeedThresholdRestored,
-	APEventShake,
-	APEventCarIdBySAL,
-	APEventHardAcceleration=80,
-	APEventHardDeceleration,
-	ApEventCrashDetected,
-	APEventDistractedStart=90,
-	APEventDistractedStop,
-	APEventGeneralHandlingDetected,
-	APEventGeneralHandlingDetectedNoMotion,
-	APEventPassengerHandlingDetected,
-	APEventPassengerHandlingDetectedNoMotion,
-	APEventDriverHandlingDetected,
-	APEventDriverHandlingDetectedNoMotion,
-	APEventTripStart=110,
-	APEventTripEnd,
+    APEventNone = -1,
+    APEventLocationUpdate=0,
+    APEventWalkingStart=10,
+    APEventWalkingStop,
+    APEventCarModeStartByDetection=20,
+    APEventCarModeStartByVehicleSpeed,
+    APEventCarModeStartByBeacon DEPRECATED_ATTRIBUTE,
+    APEventCarModeStopByDetection=30,
+    APEventCarModeStopByDetectingWalking,
+    APEventVehicleEntry,
+    APEventIgnition=60,
+    APEventSpeedThresholdExceeded=70,
+    APEventSpeedThresholdRestored,
+    APEventShake,
+    APEventCarIdBySAL,
+    APEventCarIdByBeacon DEPRECATED_ATTRIBUTE,
+    APEventHardAcceleration=80,
+    APEventHardDeceleration,
+    ApEventCrashDetected,
+    APEventRapidLaneChange,
+    APEventDistractedStart=90,
+    APEventDistractedStop,
+	 APEventGeneralHandlingDetected,
+    APEventGeneralHandlingDetectedNoMotion,
+    APEventPassengerHandlingDetected,
+    APEventPassengerHandlingDetectedNoMotion,
+	 APEventDriverHandlingDetected,
+    APEventDriverHandlingDetectedNoMotion,
+	 APEventHandlingStopped,
+    APEventTripStart=110,
+    APEventTripEnd,
 };
 
 //These values are used here to ensure we have consistency
@@ -65,36 +58,63 @@ typedef NS_ENUM(NSInteger, DriversitiActivity)
 	 APInVehicleStationary = 6
 };
 
+/**
+ *  Enumerated return status codes of the SensorAnalysisLibrary functions
+ */
+typedef NS_ENUM(NSInteger, CLOUD_STATE)
+{
+	CLOUD_STATE_NO_CHANGE = 0,
+	CLOUD_STATE_ADDED,
+	CLOUD_STATE_MODIFIED,  // Error in signal detection algorithm
+	CLOUD_STATE_DELETED,
+	CLOUD_STATE_UPLOADED,
+	CLOUD_STATE_LOCALLY_STORED,
+	CLOUD_STATE_PREPPED_FOR_UPLOAD,
+};
+
 typedef NS_ENUM(NSInteger, DriversitiHandlingAwareness)
 {
 	APStateHandlingUnknown = 0,
 	APGeneralHandlingNoMotion,
 	APGeneralHandlingInMotion,
+	
 	APDriverSideTextingNoMotion,
 	APLeftSideTextingNoMotion __attribute__((deprecated)) = APDriverSideTextingNoMotion,
+	
 	APDriverSideTextingInMotion,
 	APLeftSideTextingInMotion __attribute__((deprecated)) = APDriverSideTextingInMotion,
-	APDriverSideNoMotion,
-	APLeftSideHandlingNoMotion __attribute__((deprecated)) = APDriverSideNoMotion,
-	APDriverSideInMotion,
-	APLeftSideHandlingInMotion __attribute__((deprecated)) = APDriverSideInMotion,
+
+	APDriverSideHandlingInMotion,
+	APLeftSideHandlingInMotion __attribute__((deprecated)) = APDriverSideHandlingInMotion,
+	
+	APDriverSideHandlingNoMotion,
+	APLeftSideHandlingNoMotion __attribute__((deprecated)) = APDriverSideHandlingNoMotion,
+
 	APDriverSidePhoneCallNoMotion,
 	APLeftSidePhoneCallNoMotion __attribute__((deprecated)) = APDriverSidePhoneCallNoMotion,
+	
 	APDriverSidePhoneCallInMotion,
 	APLeftSidePhoneCallInMotion __attribute__((deprecated)) = APDriverSidePhoneCallInMotion,
 
 	APPassengerSideTextingNoMotion,
 	APRightSideTextingNoMotion __attribute__((deprecated)) = APPassengerSideTextingNoMotion,
+
 	APPassengerSideTextingInMotion,
 	APRightSideTextingInMotion __attribute__((deprecated)) = APPassengerSideTextingInMotion,
+
 	APPassengerSideHandlingNoMotion,
 	APRightSideHandlingNoMotion __attribute__((deprecated)) = APPassengerSideHandlingNoMotion,
+
 	APPassengerSideHandlingInMotion,
 	APRightSideHandlingInMotion __attribute__((deprecated)) = APPassengerSideHandlingInMotion,
+
 	APPassengerSidePhoneCallNoMotion,
 	APRightSidePhoneCallNoMotion __attribute__((deprecated)) = APPassengerSidePhoneCallNoMotion,
+
 	APPassengerSidePhoneCallInMotion,
-	APRightSidePhoneCallInMotion __attribute__((deprecated)) = APPassengerSidePhoneCallInMotion
+	APRightSidePhoneCallInMotion __attribute__((deprecated)) = APPassengerSidePhoneCallInMotion,
+
+	APHandlingStateSafe
 };
 
 typedef NS_ENUM(NSInteger, DriversitiRequestedGpsState)
@@ -104,7 +124,6 @@ typedef NS_ENUM(NSInteger, DriversitiRequestedGpsState)
 	GPS_STATE_HIGHPRECISION,
 	GPS_STATE_GEOREGIONING
 };
-
 
 //These values are used here to ensure we have consistency
 //with Android team and format documentation for the SAL team.

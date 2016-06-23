@@ -8,13 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "APVehicle+CoreDataProperties.h"
-#import "APMatchFilter.h"
 
 @interface VehicleManager : NSObject
 /** The vehicle Apio has identified, or nil if not in a vehicle or vehicle not yet identified */
-@property (nonatomic, readonly) APVehicle *  _Nullable currentVehicle;
+@property (nonatomic, readonly, nullable) APVehicle *currentVehicle;
 
-+ (instancetype _Nonnull)sharedInstance;
++ (nonnull instancetype)sharedInstance;
 
 /**
  Retrieve a vehicle for a given UUID
@@ -23,7 +22,7 @@
  
  @return vehicle for the corresponding UUID, nil if vehicle is not found
  */
-- (APVehicle* _Nullable)vehicleWithUuid:(NSString* _Nullable)uuid;
+- (nullable APVehicle*)vehicleWithUuid:(nullable NSString*)uuid;
 
 /**
  Register vehicle to the Apio cloud
@@ -38,47 +37,39 @@
  @param vin                 VIN of the vehicle
  @param block               Completion block returning both the newly added vehicle and any errors
  */
-- (void)vehicleRegisterWithName:(NSString* _Nullable)name
-                   vehicleModel:(NSString* _Nullable)vehicleModel
-                    vehicleMake:(NSString* _Nullable)vehicleMake
+- (void)vehicleRegisterWithName:(nullable NSString*)name
+                   vehicleModel:(nullable NSString*)vehicleModel
+                    vehicleMake:(nullable NSString*)vehicleMake
                     vehicleYear:(NSUInteger)vehicleYear
-            vehicleLicensePlate:(NSString* _Nullable)vehicleLicensePlate
-                   vehicleColor:(NSString* _Nullable)vehicleColor
+            vehicleLicensePlate:(nullable NSString*)vehicleLicensePlate
+                   vehicleColor:(nullable NSString*)vehicleColor
                      vehicleMPG:(float)vehicleMPG
-                            vin:(NSString* _Nullable)vin
-                completionBlock:(void (^ _Nullable)(APVehicle * _Nullable newVehicle,NSError * _Nullable error))block;
-- (void)vehicleUpdate:(APVehicle* _Nullable)vehicle
-              newName:(NSString* _Nullable)name
-             newModel:(NSString* _Nullable)model
-              newMake:(NSString* _Nullable)make
+                            vin:(nullable NSString*)vin
+                completionBlock:(nullable  void (^)(APVehicle * _Nullable newVehicle, NSError * _Nullable error))block;
+
+- (void)vehicleUpdate:(nullable APVehicle*)vehicle
+              newName:(nullable NSString*)name
+             newModel:(nullable NSString*)model
+              newMake:(nullable NSString*)make
               newYear:(NSUInteger)year
-      newLicensePlate:(NSString* _Nullable)licensePlate
-             newColor:(NSString* _Nullable)color
+      newLicensePlate:(nullable NSString*)licensePlate
+             newColor:(nullable NSString*)color
                newMPG:(float)mpg
-               newVin:(NSString* _Nullable)vin
-      completionBlock:(void (^ _Nullable)(NSError * _Nullable))block;
+               newVin:(nullable NSString*)vin
+      completionBlock:(nullable void (^)(NSError * _Nullable error))block;
 
 /**
  Retrieve all vehicles from the SDK
  @return Array of vehicles
  */
-- (NSArray* _Nullable)vehicles;
-
-/**
- Adds new match filters to an existing vehicle. Match filters are returned from vehicleTrainingStop
- @param matchFilter <#matchFilter description#>
- @param vehicle     <#vehicle description#>
- @return YES if successful, NO if error
- */
-- (BOOL)addMatchFilter:(APMatchFilter * _Nullable)matchFilter forVehicle:(APVehicle * _Nullable)vehicle;
+-(nullable NSArray*)vehicles;
 
 /**
  Returns the number of match filters saved for the given vehicle.
  @param vehicle <#vehicle description#>
  @return <#return value description#>
  */
-- (NSUInteger)matchFilterCountForVehicle:(APVehicle * _Nullable)vehicle;
-
+-(NSUInteger)matchFilterCountForVehicle:(nullable APVehicle *)vehicle __attribute__ ((deprecated));
 
 /**
  Deletes the given vehicle and its match filters
@@ -86,8 +77,8 @@
  @param vehicle Vehicle to delete
  @param block   Block to call upload completion. If Error != nil, then the vehicle was not able to be deleted
  */
-- (void)vehicleDelete:(APVehicle * _Nullable)vehicle completionBlock:(void (^ _Nullable)(NSError * _Nullable error))block;
+-(void)vehicleDelete:(nullable APVehicle *)vehicle completionBlock:(nullable void (^)(NSError * _Nullable error))block;
 
--(void)setCurrentVehicle:(APVehicle * _Nullable)currentVehicle;
+-(void)setCurrentVehicle:(nullable APVehicle *)currentVehicle;
 
 @end

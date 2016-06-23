@@ -2,7 +2,7 @@
 //  APUser+CoreDataProperties.h
 //  DriversitiSDK
 //
-//  Created by Jeff Behrbaum on 3/1/16.
+//  Created by Jeff Behrbaum on 2/25/16.
 //  Copyright © 2016 Apio. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -10,10 +10,9 @@
 //
 
 #import "APUser.h"
+#import "APVehicle.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
-@class APVehicle;
 
 @interface APUser (CoreDataProperties)
 
