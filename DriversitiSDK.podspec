@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.license      = { type: 'Commericial', file: 'LICENSE.md'}
   s.author       = { "Driversiti" => "support@driversiti.com" }
   s.social_media_url = "https://twitter.com/driversiti"
-  s.platform     = :ios, "7.1"
+  s.platform     = :ios, "8.3"
 
   s.source       = {
     :git => "https://github.com/apiosys/DriversitiSDK.git",

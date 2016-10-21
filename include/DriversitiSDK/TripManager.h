@@ -28,7 +28,8 @@
 	 Obtain the current trip
 	 @return The current trip object
 	 */
-	-(nullable DriversitiTrip *)CurrentTrip;
+	@property(nullable, nonatomic, readonly) DriversitiTrip *CurrentTrip;
+	//-(nullable DriversitiTrip *)CurrentTrip;
 
 	/**
 	 Start a trip for a vehicle, as events occur they will be associated with this trip
