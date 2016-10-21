@@ -15,9 +15,6 @@
 @class DriversitiTrip;
 
 @interface DriversitiEvent : NSObject
-	//@property (nullable, nonatomic, strong) NSNumber *cloudState;
-	//@property (nullable, nonatomic, strong) NSNumber *sendNotification;
-
 	@property (nonatomic) DriversitiEventType eventType;
 	@property (nullable, nonatomic, strong) NSString *eventID;
 	@property (nullable, nonatomic, strong) NSDate *timestamp;
@@ -26,10 +23,9 @@
 	@property (nullable, nonatomic, strong) NSString *associatedTripID;
 	@property (nullable, nonatomic, readonly) NSDictionary *optionalValues;
 
-
 	//The object ID for the event.
 	@property (nullable, nonatomic, strong) NSManagedObjectID *objID;
 
-	-(NSDictionary *)jsonObject;
-	-(BOOL)addFreeFormParameter:(NSObject *)parameterObject forKey:(NSString *)key;
+	-(nullable NSDictionary *)jsonObject;
+	-(BOOL)addFreeFormParameter:(nullable NSObject *)parameterObject forKey:(nullable NSString *)key;
 @end

@@ -30,5 +30,5 @@
 	@property (nullable, nonatomic, strong) NSArray *emergencyContacts;
 	@property (nullable, nonatomic, strong) NSArray *vehicles;
 
-	-(NSDictionary *)jsonObject;
+	-(nullable NSDictionary *)jsonObject;
 @end

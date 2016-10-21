@@ -26,5 +26,5 @@
 
 	@property (nullable, nonatomic, strong) NSManagedObjectID *objID;
 
-	-(NSDictionary *)jsonObject;
+	-(nullable NSDictionary *)jsonObject;
 @end
