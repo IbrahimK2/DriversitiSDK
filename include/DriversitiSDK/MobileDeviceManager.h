@@ -27,10 +27,11 @@ typedef enum
 	@property(nonatomic, readonly) DRIVERSITI_SDK_DEVICE_SUPPORT_LEVEL isCurrentDeviceSupported;
 	@property(nonatomic, readonly) DRIVERSITI_SDK_DEVICE_SUPPORT_LEVEL isCurrentOSVersionSupported;
 
-	@property(nullable, nonatomic, strong, readonly) NSArray *allSupportedDevices;
-	@property(nullable, nonatomic, strong, readonly) NSArray *allSupportedOSVersions;
-
 	+(nonnull instancetype)sharedInstance;
 
+	/**
+	 Causes the request to get sent to the cloud and retreive the list of devices
+	 The DriversitiSDK has been validated to support.
+	 */
 	-(void)retreiveSupportedDevices;
 @end

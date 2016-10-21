@@ -10,43 +10,60 @@
 
 #import "APTrip+CoreDataProperties.h"
 #import "APVehicle+CoreDataProperties.h"
+#import "DriversitiTrip.h"
 
 @interface TripManager : NSObject
 
-+(nonnull instancetype)sharedInstance;
+	-(nullable APTrip*)currentTrip  __attribute__((deprecated("Will be removed in the next iteration. Use CurrentTrip instead")));
+	-(nullable NSArray*)tripsSortedByDate __attribute__((deprecated("Will be removed. Call allTripsSortedByDate:withEvents instead")));
+	-(BOOL)validateTrip:(nullable APTrip *)trip __attribute__((deprecated("Will be removed. Call validateDriversitiTrip:trip instead.")));
+	-(void)deleteTrip:(nullable APTrip*)trip __attribute__((deprecated("Will be removed in the next iteration. Trip deletion will be handled internally based on trip properties.")));
+	-(nullable NSError *)startTripForVehicle:(nullable APVehicle*)vehicle startTime:(nullable NSDate*)startTime  __attribute__((deprecated("Will be removed in the next iteration. Use startANewTrip instead. Vehicles are not incorporated any more.")));
 
-#pragma mark - Trip Handling
-/** @name Trip Handling */
+	@property(nullable, nonatomic, readonly) NSURL *activeTripID;
 
-/**
- Obtain the current trip
- @return The current trip object
- */
--(nullable APTrip*)currentTrip;
+	+(nonnull instancetype)sharedInstance;
 
-/**
- Start a trip for a vehicle, as events occur they will be associated with this trip
+	/**
+	 Obtain the current trip
+	 @return The current trip object
+	 */
+	-(nullable DriversitiTrip *)CurrentTrip;
 
- @param vehicle   Vehicle for which the trip is being create
- @param startTime Time to start the trip
- @note Once the function without error, the current trip can be fetched by [TripManager currentTrip]
- */
--(nullable NSError *) startTripForVehicle:(nullable APVehicle*)vehicle startTime:(nullable NSDate*)startTime;
+	/**
+	 Start a trip for a vehicle, as events occur they will be associated with this trip
 
-/**
- Stop the current trip and queue it for upload to the cloud
+	 @param vehicle   Vehicle for which the trip is being create
+	 @param startTime Time to start the trip
+	 @note Once the function without error, the current trip can be fetched by [TripManager currentTrip]
+	 */
+	-(nullable NSError *)startANewTrip:(nonnull NSDate *)atStartTime;
 
- @param stopTime Time to stop the trip
- */
--(void)stopTripAtTime:(nullable NSDate*)stopTime;
+	/**
+	 Stop the current trip and queue it for upload to the cloud
 
--(nullable NSArray*)tripsSortedByDate;
+	 @param stopTime Time to stop the trip
+	 */
+	-(void)stopTripAtTime:(nullable NSDate*)stopTime;
 
-/**
- Remove a trip from local data store
+	-(int)totalTripCount;
 
- @param trip APTrip object to remove
- */
--(void)deleteTrip:(nullable APTrip*)trip;
+	-(BOOL)validateDriversitiTrip:(nullable DriversitiTrip *)trip;
 
+	/**
+	 All Trips the current trip and queue it for upload to the cloud
+
+	 @param withEvents:
+	 TRUE: All events in all the trips will be populated.
+		NOTE: Setting this to true can slow down this call significantly
+
+	 FALSE: Returns all the trips but without their associated events.
+		NOTE: you can query for the events of an individual trip later on
+				with the "retreiveEventsForTrip" call.
+	*/
+	-(nullable NSArray<DriversitiTrip *> *)allTripsSortedByDate:(BOOL)withEvents;
+
+
+	//Pass in nil for the current trip since it may not have an ID to query on.
+	-(nullable NSArray<DriversitiEvent*>*)retreiveEventsForTrip:(nullable DriversitiTrip *)theTrip;
 @end

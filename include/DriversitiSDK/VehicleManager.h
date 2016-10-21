@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "APVehicle+CoreDataProperties.h"
 
+__attribute__ ((deprecated("This class no longer servers a purpose and will be made unavailable in the next iteration")))
 @interface VehicleManager : NSObject
 /** The vehicle Apio has identified, or nil if not in a vehicle or vehicle not yet identified */
-@property (nonatomic, readonly, nullable) APVehicle *currentVehicle;
+@property (nonatomic, readonly, nullable) APVehicle *currentVehicle __attribute__((deprecated));
 
 + (nonnull instancetype)sharedInstance;
 
@@ -45,7 +46,7 @@
                    vehicleColor:(nullable NSString*)vehicleColor
                      vehicleMPG:(float)vehicleMPG
                             vin:(nullable NSString*)vin
-                completionBlock:(nullable  void (^)(APVehicle * _Nullable newVehicle, NSError * _Nullable error))block;
+                completionBlock:(nullable  void (^)(APVehicle * _Nullable newVehicle, NSError * _Nullable error))block __attribute__((deprecated));
 
 - (void)vehicleUpdate:(nullable APVehicle*)vehicle
               newName:(nullable NSString*)name
@@ -56,7 +57,7 @@
              newColor:(nullable NSString*)color
                newMPG:(float)mpg
                newVin:(nullable NSString*)vin
-      completionBlock:(nullable void (^)(NSError * _Nullable error))block;
+      completionBlock:(nullable void (^)(NSError * _Nullable error))block  __attribute__((deprecated));
 
 /**
  Retrieve all vehicles from the SDK
@@ -77,8 +78,8 @@
  @param vehicle Vehicle to delete
  @param block   Block to call upload completion. If Error != nil, then the vehicle was not able to be deleted
  */
--(void)vehicleDelete:(nullable APVehicle *)vehicle completionBlock:(nullable void (^)(NSError * _Nullable error))block;
+-(void)vehicleDelete:(nullable APVehicle *)vehicle completionBlock:(nullable void (^)(NSError * _Nullable error))block  __attribute__((deprecated));
 
--(void)setCurrentVehicle:(nullable APVehicle *)currentVehicle;
+-(void)setCurrentVehicle:(nullable APVehicle *)currentVehicle  __attribute__((deprecated));
 
 @end

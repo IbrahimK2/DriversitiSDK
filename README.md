@@ -1,12 +1,12 @@
 # DriversitiSDK for iOS
 
-The DriversitiSDK for iOS enables Driversiti customers track driver behavior and receive real-time event notifications for enrolled drivers and vehicles. In addition to real-time notifications, these behaviors and events are uploaded to Driversiti's hosted cloud, allowing Driversiti's customers later access to the behaviors and overall driving scores of their company's drivers.
+The DriversitiSDK for iOS enables Driversiti customers track driver behavior and receive real-time event notifications for enrolled drivers. In addition to real-time notifications, these behaviors and events are uploaded to Driversiti's hosted cloud, allowing Driversiti's customers later access to the behaviors and overall driving scores of their company's drivers.
 
 DriversitiSDK employs Driversiti's patented real-time crash detection to notify the host application if DriversitiSDK detects a vehicle crash using the phone's sensors.
 
 ## Requirements and Supported Devices for iOS Version
 - iOS 7.1 and higher
-- iPhone 5S, SE, 6, 6 Plus, 6S, and 6S Plus
+- iPhone 5S, SE, 6, 6 Plus, 6S, 6S Plus, 7, and 7 Plus
 - Host application must enable the `location` UIBackgroundMode and location always usage
 - If prompted, the user must allow access to GPS in background and access to the Activity Monitor.
 
@@ -87,9 +87,9 @@ __block UIBackgroundTaskIdentifier taskID = [application beginBackgroundTaskWith
 
 
 
-#### b. Register User and Vehicle
+#### b. Register User 
 
-Before the SDK can begin reporting detections, a User and Vehicle needs to be registered using the appropriate methods on ``UserManager`` and ``VehicleManager``. An example is provided below.
+Before the SDK can begin reporting detections, a User needs to be registered using the appropriate methods on ``UserManager``. An example is provided below.
 
 ```objective-c
 [[UserManager sharedInstance]
@@ -117,30 +117,6 @@ Before the SDK can begin reporting detections, a User and Vehicle needs to be re
 ```
 
 Importantly, ``{COMPANY}`` will need to be set to the Company name specified to you by <support@driversiti.com>. For trial customers, please use ``Soteria`` as the company name.
-
-```objective-c
-
-[[VehicleManager sharedInstance]
-  vehicleRegisterWithName:@"{VEHICLE_NAME}"
-  vehicleModel:@"{MODEL}"
-  vehicleMake:@"{MAKE}"
-  vehicleYear:{YEAR}
-  vehicleLicensePlate:@""
-  vehicleColor:@""
-  vehicleMPG:0.0
-  vin:@""
-  completionBlock:^(APVehicle *newVehicle, NSError *error)
-		 {
-			 if (error != nil)
-			 {
-				 // Handle error case
-			 }
-			 else
-			 {
-				 // Handle success case
-			 }
-		 }];
-```
 
 #### c. Set ``DriversitiSensorDelegate`` Delegate and start Data Collection
 
