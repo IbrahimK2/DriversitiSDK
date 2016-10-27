@@ -19,6 +19,14 @@ DriversitiSDK employs Driversiti's patented real-time crash detection to notify 
 - Check out the full SDK documentation on [cocoadocs](http://cocoadocs.org/docsets/DriversitiSDK/).
 - Check out the [wiki](https://github.com/apiosys/DriversitiSDK/wiki) for details on specific topics.
 
+## Changes and Release Notes:
+
+- All AP classes have been renamed to an associated Driversiti type.
+- Examples include: APTrip is Now DriversitiTrip and APTripEvent is now DriversitiEvent  
+
+- Be sure to change all deprecated call as they were deprecated for a security flaw and no longer return valid objects.
+- Using the recommended and corresponding calls will work by returning valid data of the new data types.
+
 ### 1. Receive a DriversitiSDK Developer Key
 
 Before DriversitiSDK will operate, your organization will need to acquire an DriversitiSDK Developer Key, which may be requested using the [Driversiti SDK Key Request form](http://goo.gl/forms/YSSuYZ16Rk). Your organization only needs one shared SDK key, which can be used by multiple developers within your organization and for both the iOS and Android platforms.
