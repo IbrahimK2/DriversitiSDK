@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "DriversitiSDK"
-  s.version      = "2.0.1"
+  s.version      = "2.0.2"
   s.summary      = "Driving safety for the mobile generation. Real-time notifications of unsafe driving behaviors."
   s.description  = <<-DESC
                     Transform smartphones from driver's worst enemy to their best friend
